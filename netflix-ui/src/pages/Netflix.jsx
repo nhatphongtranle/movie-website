@@ -1,7 +1,5 @@
-import React from 'react'
+import React from "react";
 
 export default function Netflix() {
-  return (
-    <div>Netflix</div>
-  )
+  return <div>Netflix</div>;
 }
