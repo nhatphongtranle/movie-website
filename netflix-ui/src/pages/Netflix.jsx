@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import backgroundImage from "../assets/home.jpg";
 import MovieLogo from "../assets/homeTitle.webp";
+import Slider from "../components/Slider";
 import { FaPlay } from "react-icons/fa";
 import { AiOutlineInfoCircle } from "react-icons/ai";
 import styled from "styled-components";
@@ -60,6 +61,7 @@ export default function Netflix() {
           </div>
         </div>
       </div>
+      <Slider movies={movies} />
     </Container>
   );
 }
