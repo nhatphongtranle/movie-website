@@ -10,7 +10,7 @@ import { onAuthStateChanged } from "firebase/auth";
 import { firebaseAuth } from "../utils/firebase-config";
 import { useDispatch } from "react-redux";
 import { removeMovieFromLiked } from "../store";
-export default function Card({ movieData, isLiked = false }) {
+export default React.memo(function Card({ movieData, isLiked = false }) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [isHovered, setIsHovered] = useState(false);
@@ -55,10 +55,10 @@ export default function Card({ movieData, isLiked = false }) {
                   <BsCheck
                     title="Remove from List"
                     /*onClick={() =>
-                      dispatch(
-                        removeMovieFromLiked({ movieId: movieData.id, email }),
-                      )
-                    }*/
+                    dispatch(
+                      removeMovieFromLiked({ movieId: movieData.id, email }),
+                    )
+                  }*/
                   />
                 ) : (
                   <AiOutlinePlus title="Add to my list" /> //onClick={addToList} />
@@ -80,7 +80,7 @@ export default function Card({ movieData, isLiked = false }) {
       )}
     </Container>
   );
-}
+});
 const Container = styled.div`
   max-width: 230px;
   width: 230px;
