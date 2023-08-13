@@ -7,7 +7,7 @@ export default function SelectGenre({ genres, type }) {
   return (
     <Select
       className="flex"
-      /*onChange={(e) => {
+      onChange={(e) => {
         dispatch(
           fetchDataByGenre({
             genres,
@@ -15,7 +15,7 @@ export default function SelectGenre({ genres, type }) {
             type,
           }),
         );
-      }}*/
+      }}
     >
       {genres.map((genre) => {
         return (

@@ -11,7 +11,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchMovies, getGenres } from "../store";
 export default function Netflix() {
   const [isScrolled, setIsScrolled] = useState(false);
-  const genres = useSelector((state) => state.netflix.genres);
+  //const genres = useSelector((state) => state.netflix.genres);
   const genresLoaded = useSelector((state) => state.netflix.genresLoaded);
   const movies = useSelector((state) => state.netflix.movies);
   const navigate = useNavigate();
@@ -21,9 +21,10 @@ export default function Netflix() {
   useEffect(() => {
     dispatch(getGenres());
   }, []);
+
   useEffect(() => {
     if (genresLoaded) {
-      dispatch(fetchMovies({ genres, type: "all" }));
+      dispatch(fetchMovies({ type: "all" }));
     }
   }, [genresLoaded]);
 
