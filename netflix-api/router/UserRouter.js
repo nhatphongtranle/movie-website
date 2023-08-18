@@ -1,6 +1,4 @@
-const {
-  addToLikedMovies,
-} = require("../controllers/UserController");
+const { addToLikedMovies } = require("../controllers/UserController");
 
 const router = require("express").Router();
 
