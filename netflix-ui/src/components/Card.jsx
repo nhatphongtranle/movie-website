@@ -8,11 +8,12 @@ import { BiChevronDown } from "react-icons/bi";
 import { BsCheck } from "react-icons/bs";
 import { onAuthStateChanged } from "firebase/auth";
 import { firebaseAuth } from "../utils/firebase-config";
-import { useDispatch } from "react-redux";
-import { removeMovieFromLiked } from "../store";
+//import { useDispatch } from "react-redux";
+import axios from "axios";
+//import { removeMovieFromLiked } from "../store";
 export default React.memo(function Card({ movieData, isLiked = false }) {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+  //const dispatch = useDispatch();
   const [isHovered, setIsHovered] = useState(false);
   const [email, setEmail] = useState(undefined);
 
@@ -21,6 +22,17 @@ export default React.memo(function Card({ movieData, isLiked = false }) {
       setEmail(currentUser.email);
     } else navigate("/login");
   });
+
+  const addToList = async () => {
+    try {
+      await axios.post("http://localhost:5000/api/user/add", {
+        email,
+        data: movieData,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <Container
       onMouseEnter={() => setIsHovered(true)}
@@ -28,14 +40,16 @@ export default React.memo(function Card({ movieData, isLiked = false }) {
     >
       <img
         src={`https://image.tmdb.org/t/p/w500${movieData.image}`}
-        alt="movie"
+        alt="card"
+        onClick={() => navigate("/player")}
       />
+
       {isHovered && (
         <div className="hover">
-          <div className="image-vide-container">
+          <div className="image-video-container">
             <img
               src={`https://image.tmdb.org/t/p/w500${movieData.image}`}
-              alt="movie"
+              alt="card"
               onClick={() => navigate("/player")}
             />
           </div>
@@ -55,13 +69,13 @@ export default React.memo(function Card({ movieData, isLiked = false }) {
                   <BsCheck
                     title="Remove from List"
                     /*onClick={() =>
-                    dispatch(
-                      removeMovieFromLiked({ movieId: movieData.id, email }),
-                    )
-                  }*/
+                      dispatch(
+                        removeMovieFromLiked({ movieId: movieData.id, email }),
+                      )
+                    }*/
                   />
                 ) : (
-                  <AiOutlinePlus title="Add to my list" /> //onClick={addToList} />
+                  <AiOutlinePlus title="Add to my list" onClick={addToList} />
                 )}
               </div>
               <div className="info">
