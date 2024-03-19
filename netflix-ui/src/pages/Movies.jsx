@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Navbar from "../components/Navbar";
-//import CardSlider from "../components/CardSlider";
+import CardSlider from "../components/CardSlider";
 import { onAuthStateChanged } from "firebase/auth";
 import { firebaseAuth } from "../utils/firebase-config";
 import { useNavigate } from "react-router-dom";
@@ -11,13 +11,13 @@ import SelectGenre from "../components/SelectGenre";
 import Slider from "../components/Slider";
 import NotAvailable from "../components/NotAvailable";
 
-export default function Movies() {
+function MoviePage() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const movies = useSelector((state) => state.netflix.movies);
   const genres = useSelector((state) => state.netflix.genres);
   const genresLoaded = useSelector((state) => state.netflix.genresLoaded);
-  const movies = useSelector((state) => state.netflix.movies);
-  const navigate = useNavigate();
 
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -30,13 +30,17 @@ export default function Movies() {
     }
   }, [genresLoaded]);
 
+  const [user, setUser] = useState(undefined);
+
+  onAuthStateChanged(firebaseAuth, (currentUser) => {
+    if (currentUser) setUser(currentUser.uid);
+    else navigate("/login");
+  });
+
   window.onscroll = () => {
-    setIsScrolled(window.scrollY === 0 ? false : true);
+    setIsScrolled(window.pageYOffset === 0 ? false : true);
     return () => (window.onscroll = null);
   };
-  onAuthStateChanged(firebaseAuth, (currentUser) => {
-    //  if (currentUser) navigate("/");
-  });
 
   return (
     <Container>
@@ -61,3 +65,4 @@ const Container = styled.div`
     }
   }
 `;
+export default MoviePage;

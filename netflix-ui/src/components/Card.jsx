@@ -1,19 +1,21 @@
 import React, { useState } from "react";
-import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
+import styled from "styled-components";
 import { IoPlayCircleSharp } from "react-icons/io5";
 import { AiOutlinePlus } from "react-icons/ai";
 import { RiThumbUpFill, RiThumbDownFill } from "react-icons/ri";
 import { BiChevronDown } from "react-icons/bi";
 import { BsCheck } from "react-icons/bs";
+import axios from "axios";
 import { onAuthStateChanged } from "firebase/auth";
 import { firebaseAuth } from "../utils/firebase-config";
-//import { useDispatch } from "react-redux";
-import axios from "axios";
-//import { removeMovieFromLiked } from "../store";
-export default React.memo(function Card({ movieData, isLiked = false }) {
+import { useDispatch } from "react-redux";
+import { removeMovieFromLiked } from "../store";
+//import video from "../assets/video.mp4";
+
+export default React.memo(function Card({ index, movieData, isLiked = false }) {
   const navigate = useNavigate();
-  //const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const [isHovered, setIsHovered] = useState(false);
   const [email, setEmail] = useState(undefined);
 
@@ -33,6 +35,7 @@ export default React.memo(function Card({ movieData, isLiked = false }) {
       console.log(error);
     }
   };
+
   return (
     <Container
       onMouseEnter={() => setIsHovered(true)}
@@ -68,11 +71,11 @@ export default React.memo(function Card({ movieData, isLiked = false }) {
                 {isLiked ? (
                   <BsCheck
                     title="Remove from List"
-                    /*onClick={() =>
+                    onClick={() =>
                       dispatch(
-                        removeMovieFromLiked({ movieId: movieData.id, email }),
+                        removeMovieFromLiked({ movieId: movieData.id, email })
                       )
-                    }*/
+                    }
                   />
                 ) : (
                   <AiOutlinePlus title="Add to my list" onClick={addToList} />
@@ -95,6 +98,7 @@ export default React.memo(function Card({ movieData, isLiked = false }) {
     </Container>
   );
 });
+
 const Container = styled.div`
   max-width: 230px;
   width: 230px;
