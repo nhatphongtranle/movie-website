@@ -37,10 +37,10 @@ function Signup() {
         <div className="body flex column a-center j-center">
           <div className="text flex column">
             <h1>Unlimited movies, TV shows and more.</h1>
-            <h4>Watch anywhere. Cancel anytime.</h4>
-            <h6>
+            <p>Watch anywhere. Cancel anytime.</p>
+            <h3>
               Ready to watch? Enter your email to create or restart membership.
-            </h6>
+            </h3>
           </div>
           <div className="form">
             <input
@@ -92,20 +92,36 @@ const Container = styled.div`
     display: grid;
     grid-template-rows: 15vh 85vh;
     .body {
-      gap: 1rem;
+      max-width: calc(100%-4rem);
+      margin: auto;
       .text {
         gap: 1rem;
         text-align: center;
         font-size: 2rem;
         h1 {
-          padding: 0 25rem;
+          font-size: 3rem;
+          font-weight: 900;
+          padding: 0 10rem;
+        }
+        p {
+          font-size: 1.5rem;
+          font-weight: 400;
+        }
+        h3 {
+          font-size: 1.25rem;
+          font-weight: 400;
+          line-height: 1.5;
         }
       }
       .form {
-        display: grid;
-        grid-template-columns: ${({ showPassword }) =>
-          showPassword ? "1fr 1fr" : "2fr 1fr"};
-        width: 60%;
+        text-align: left;
+        margin: 1rem auto 0;
+        position: relative;
+        width: 100%;
+        flex-direction: row;
+        display: flex;
+        justify-content: center;
+        align-item: center;
         input {
           color: black;
           border: none;
