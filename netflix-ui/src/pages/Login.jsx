@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import logo from "../assets/logo.png";
-import background from "../assets/login.jpg";
+//import logo from "../assets/logo.png";
+//import background from "../assets/login.jpg";
 import { useNavigate } from "react-router-dom";
 import BackgroundImage from "../components/BackgroundImage";
 import Header from "../components/Header";
@@ -31,14 +31,14 @@ function Login() {
       <div className="content">
         <Header />
         <div className="form-container flex column a-center j-center">
-          <div className="form flex column a-center j-center">
-            <div className="title">
-              <h3>Login</h3>
-            </div>
-            <div className="container flex column">
-              <input
+          <div className="form wth">
+            <header className="title">
+                <h1 className="login-page-title mg-bt">Sign In</h1>
+            </header>
+            <form className="Signin-form" aria-label="Sign In" method="post">
+              <input 
                 type="text"
-                placeholder="Email"
+                placeholder="Email or phone number"
                 onChange={(e) => setEmail(e.target.value)}
                 value={email}
               />
@@ -48,8 +48,8 @@ function Login() {
                 onChange={(e) => setPassword(e.target.value)}
                 value={password}
               />
-              <button onClick={handleLogin}>Login to your account</button>
-            </div>
+              <button onClick={handleLogin}>Sign In</button>
+            </form>
           </div>
         </div>
       </div>
@@ -68,19 +68,44 @@ const Container = styled.div`
     background-color: rgba(0, 0, 0, 0.5);
     grid-template-rows: 15vh 85vh;
     .form-container {
-      gap: 2rem;
-      height: 85vh;
+      flex-grow: 1;
+      margin: 0 auto;
+      padding: 0 5%;
       .form {
-        padding: 2rem;
+        border-radius: 4px;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        margin: 0;
+        padding: 4rem;
         background-color: #000000b0;
-        width: 25vw;
-        gap: 2rem;
         color: white;
-        .container {
-          gap: 2rem;
+        .title {
+          text-align: left;
+        }
+        .login-page-title {
+          margin-block-start: 0;
+          margin-block-end: 0;
+          margin: 0;
+          font-size: 2rem;
+          font-weight: 700;
+          padding: 0;
+          color: rgb(255,255,255)
+        }
+        .Signin-form {
+          display: flex;
+          flex-direction: column;
+          flex-grow: 1;
+          gap: 16px;
+          padding: none;
           input {
             padding: 0.5rem 1rem;
-            width: 15rem;
+            font-size: 1rem;
+            line-height: 1.5;
+            padding: 1rem;
+            font-weight: 400;
+            color: rgb(255, 255, 255);
+            background-color: rgb(27, 25, 26);
           }
           button {
             padding: 0.5rem 1rem;

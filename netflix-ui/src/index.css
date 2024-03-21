@@ -13,6 +13,7 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  border: none;
 }
 
 html,
@@ -43,3 +44,23 @@ body::-webkit-scrollbar {
 .a-center {
   align-items: center;
 }
+
+.wth {
+  width: 450px;
+}
+
+.mg-bt {
+  margin-bottom: 28px !important;
+}
+
+@media screen and (min-width: 600px) {
+  .content .form-container{
+    margin-bottom: 50px !important;
+    max-width: 450px;
+  }
+  .content .form {
+    min-height: 707px;
+    padding: 55px 68px;
+  }
+}
+
