@@ -36,7 +36,7 @@ function Login() {
                 <h1 className="login-page-title mg-bt">Sign In</h1>
             </header>
             <form className="Signin-form" aria-label="Sign In" method="post">
-              <input 
+              <input className="Form-input"
                 type="text"
                 placeholder="Email or phone number"
                 onChange={(e) => setEmail(e.target.value)}
@@ -50,6 +50,19 @@ function Login() {
               />
               <button onClick={handleLogin}>Sign In</button>
             </form>
+            <footer className="footer">
+              <div className="remember-checkbox">
+                <input 
+                  type="checkbox" 
+                  id="Remember-me"
+                  name="Rememberme"
+                />
+                <label htmlFor="" className="Remember-me-label">Remember me</label>
+              </div>
+              <p className="Login-signup-now">New to Netflix?
+                <a className="Sign-up">Sign up now</a>
+              </p>
+            </footer>
           </div>
         </div>
       </div>
@@ -105,7 +118,8 @@ const Container = styled.div`
             padding: 1rem;
             font-weight: 400;
             color: rgb(255, 255, 255);
-            background-color: rgb(27, 25, 26);
+            background: rgba(22, 22, 22, 0.7);
+            border-color: rgba(128, 128, 128, 0.7);
           }
           button {
             padding: 0.5rem 1rem;
@@ -113,9 +127,41 @@ const Container = styled.div`
             border: none;
             cursor: pointer;
             color: white;
-            border-radius: 0.2rem;
+            transition: inherit:
+            border-style: solid;
+            border-width: 0.06rem;
+            border-radius: 0.1875rem;
             font-weight: bolder;
             font-size: 1.05rem;
+          }
+        }
+      }
+      .footer {
+        margin-top: 20px;
+        .remember-checkbox {
+          display: inline-block;
+        }
+        .Remember-me-label {
+          font-size: 1rem;
+          line-height: initial;
+          color: rgb(255, 255, 255);
+          padding-left: 0.75rem;
+          flex: 1 1 0%;
+        }
+        .Login-signup-now {
+          margin-block-start: 0;
+          margin-block-end: 0;
+          margin: 0;
+          padding: 0;
+          color: rgba(255, 255, 255, 0.7);
+          font-size: 1rem;
+          font-weight: 400;
+          margin-top: 16px;
+          .Sign-up {
+            color: rgb(255, 255, 255);
+            font-weight: 500;
+            cursor: pointer;
+            padding-left: 0.5rem;
           }
         }
       }
