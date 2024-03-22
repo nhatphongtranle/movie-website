@@ -8,10 +8,11 @@ import Header from "../components/Header";
 import { onAuthStateChanged, signInWithEmailAndPassword } from "firebase/auth";
 import { firebaseAuth } from "../utils/firebase-config";
 
-function Login() {
+function Login(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+
 
   const handleLogin = async () => {
     try {
@@ -60,8 +61,27 @@ function Login() {
                 <label htmlFor="" className="Remember-me-label">Remember me</label>
               </div>
               <p className="Login-signup-now">New to Netflix?
-                <a className="Sign-up">Sign up now</a>
+                <a className="Sign-up" target="self" onClick={() => navigate(props.login ? "/login" : "/signup")}>
+                  {props.login ? "Sign In" : "Sign up now"}
+                </a>
               </p>
+              <div className="Recaptcha-terms-of-use">
+                <p>
+                  <span>
+                  This page is protected by Google reCAPTCHA to ensure you're not a bot.
+                  </span>
+                  <button className="Recaptcha-terms-of-use--link-button hidden">Learn more.</button>
+                </p>
+                <div className="Recaptcha-terms-of-use--disclosure visible">
+                  <span className="Recaptcha-disclosure-text">
+                    The information collected by Google reCAPTCHA is subject to the Google
+                    <a href="https://policies.google.com/privacy" id="Recaptcha-privacy-link" target="blank"> Privacy Policy </a>
+                      and
+                    <a href="https://policies.google.com/terms" id="Recaptcha-tos-link" target="blank"> Terms of Service</a>,
+                    and is used for providing, maintaining, and improving the reCAPTCHA service and for general security purposes (it is not used for personalized advertising by Google).
+                  </span>
+                </div>
+              </div>
             </footer>
           </div>
         </div>
@@ -148,6 +168,13 @@ const Container = styled.div`
           padding-left: 0.75rem;
           flex: 1 1 0%;
         }
+        p {
+          display: block;
+          margin-block-start: 1em;
+          margin-block-end: 1em;
+          margin-inline-start: 0px;
+          margin-inline-end: 0px;
+        }
         .Login-signup-now {
           margin-block-start: 0;
           margin-block-end: 0;
@@ -162,6 +189,32 @@ const Container = styled.div`
             font-weight: 500;
             cursor: pointer;
             padding-left: 0.5rem;
+            text-decoration: none;  
+          }
+        }
+        .Recaptcha-terms-of-use {
+          position: relative; 
+          color: #8c8c8c;
+          font-size: 13px;
+          margin-top: 11px;
+          text-align: left;
+          .Recaptcha-terms-of-use--link-button {
+            background-color: transparent;
+            border: none;
+            color: #0071eb;
+            cursor: pointer;
+            display: inline;
+            font-family: inherit;
+            font-size: inherit;
+            padding: 0;
+          }
+          .Recaptcha-terms-of-use--disclosure {
+            transition: height .5s ease, opacity .5s ease;
+            .Recaptcha-disclosure-text a {
+              color: #0080ff;
+              text-decoration: none;
+              cursor: pointer;
+            }
           }
         }
       }
