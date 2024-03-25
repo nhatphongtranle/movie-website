@@ -128,7 +128,6 @@ const Container = styled.div`
         .Signin-form {
           display: flex;
           flex-direction: column;
-          flex-grow: 1;
           gap: 16px;
           padding: none;
           input {
@@ -157,7 +156,7 @@ const Container = styled.div`
         }
       }
       .footer {
-        margin-top: 20px;
+        margin-top: 30px;
         .remember-checkbox {
           display: inline-block;
         }

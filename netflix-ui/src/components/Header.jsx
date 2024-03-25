@@ -1,7 +1,7 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
-import styled from "styled-components";
-import logo from "../assets/logo.png";
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import styled from 'styled-components';
+import logo from '../assets/logo.png';
 
 export default function Header(props) {
   const navigate = useNavigate();
@@ -10,8 +10,8 @@ export default function Header(props) {
       <div className="logo">
         <img src={logo} alt="logo" />
       </div>
-      <button onClick={() => navigate(props.login ? "/login" : "/signup")}>
-        {props.login ? "Sign In" : "Sign In"}
+      <button onClick={() => navigate(props.login ? '/login' : '/signup')}>
+        {props.login ? 'Sign In' : 'Sign In'}
       </button>
     </StyledHeader>
   );
