@@ -1,18 +1,15 @@
-import {
-  createUserWithEmailAndPassword,
-  onAuthStateChanged,
-} from "firebase/auth";
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import styled from "styled-components";
-import BackgroundImage from "../components/BackgroundImage";
-import Header from "../components/Header";
-import { firebaseAuth } from "../utils/firebase-config";
+import { createUserWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import styled from 'styled-components';
+import BackgroundImage from '../components/BackgroundImage';
+import Header from '../components/Header';
+import { firebaseAuth } from '../utils/firebase-config';
 function Signup() {
   const [showPassword, setShowPassword] = useState(false);
   const [formValues, setFormValues] = useState({
-    email: "",
-    password: "",
+    email: '',
+    password: '',
   });
   const navigate = useNavigate();
 
@@ -26,7 +23,7 @@ function Signup() {
   };
 
   onAuthStateChanged(firebaseAuth, (currentUser) => {
-    if (currentUser) navigate("/");
+    if (currentUser) navigate('/');
   });
 
   return (
@@ -34,44 +31,57 @@ function Signup() {
       <BackgroundImage />
       <div className="content">
         <Header login />
-        <div className="body flex column a-center j-center">
-          <div className="text flex column">
-            <h1>Unlimited movies, TV shows and more.</h1>
-            <p>Watch anywhere. Cancel anytime.</p>
-            <h3>
-              Ready to watch? Enter your email to create or restart membership.
-            </h3>
-          </div>
-          <div className="form">
-            <input
-              type="email"
-              placeholder="Email address"
-              onChange={(e) =>
-                setFormValues({
-                  ...formValues,
-                  [e.target.name]: e.target.value,
-                })
-              }
-              name="email"
-              value={formValues.email}
-            />
-            {showPassword && (
-              <input
-                type="password"
-                placeholder="Password"
-                onChange={(e) =>
-                  setFormValues({
-                    ...formValues,
-                    [e.target.name]: e.target.value,
-                  })
-                }
-                name="password"
-                value={formValues.password}
-              />
-            )}
-            {!showPassword && (
-              <button onClick={() => setShowPassword(true)}>Get Started</button>
-            )}
+        <div className="body-container j-center">
+          <div className="body-content a-center">
+            <div className="Sign-up">
+              <div className="text">
+                <h1>Unlimited movies, TV shows and more.</h1>
+                <p>Watch anywhere. Cancel anytime.</p>
+              </div>
+              <div className="form-signup">
+                <div className="form-signup-body">
+                  <form
+                    action=""
+                    className="email-form flex column"
+                    method="post"
+                    aria-label="Sign up or restart your membership with Netflix">
+                    <h3>Ready to watch? Enter your email to create or restart membership.</h3>
+                    <input
+                      autoComplete="email"
+                      minLength={'5'}
+                      maxLength={'50'}
+                      type="email"
+                      name="email"
+                      placeholder="Email address"
+                      onChange={(e) =>
+                        setFormValues({
+                          ...formValues,
+                          [e.target.name]: e.target.value,
+                        })
+                      }
+                      value={formValues.email}
+                    />
+                    {showPassword && (
+                      <input
+                        type="password"
+                        placeholder="Password"
+                        onChange={(e) =>
+                          setFormValues({
+                            ...formValues,
+                            [e.target.name]: e.target.value,
+                          })
+                        }
+                        name="password"
+                        value={formValues.password}
+                      />
+                    )}
+                    {!showPassword && (
+                      <button onClick={() => setShowPassword(true)}>Get Started</button>
+                    )}
+                  </form>
+                </div>
+              </div>
+            </div>
           </div>
           {showPassword && <button onClick={handleSignIn}>Log In</button>}
         </div>
@@ -91,66 +101,48 @@ const Container = styled.div`
     width: 100vw;
     display: grid;
     grid-template-rows: 15vh 85vh;
-    .body {
-      max-width: calc(100%-4rem);
-      margin: auto;
-      .text {
-        gap: 1rem;
+    .body-container {
+      position: relative;
+      text-align: center;
+      height: 100%;
+      color: rgb(255, 255, 255);
+      .body-content {
+        margin: auto;
         text-align: center;
-        font-size: 2rem;
-        h1 {
-          font-size: 3rem;
-          font-weight: 900;
-          padding: 0 10rem;
-        }
-        p {
-          font-size: 1.5rem;
-          font-weight: 400;
-        }
-        h3 {
-          font-size: 1.25rem;
-          font-weight: 400;
-          line-height: 1.5;
-        }
-      }
-      .form {
-        text-align: left;
-        margin: 1rem auto 0;
-        position: relative;
-        width: 100%;
-        flex-direction: row;
-        display: flex;
-        justify-content: center;
-        align-item: center;
-        input {
-          color: black;
-          border: none;
-          padding: 1.5rem;
-          font-size: 1.2rem;
-          border: 1px solid black;
-          &:focus {
-            outline: none;
+        .Sign-up {
+          -ms-flex-preferred-size: 50%;
+          flex-basis: 50%;
+          padding: 0;
+          z-index: 1;
+          width: 100%;
+          h1 {
+            margin: 0;
+            font-size: 2rem;
+            font-weight: 700;
+          }
+          p {
+            margin: 1rem 0 0;
+            font-size: 1.125rem;
+            font-weight: 400;
+          }
+          .form-signup {
+            margin: 1.5rem 0 0;
+            .form-signup-body {
+              text-align: center;
+              box-sizing: border-box;
+              max-width: 61.5rem;
+              margin: 0 auto;
+              padding: 0 1.5rem;
+              content: '1';
+              h3 {
+                margin: 0;
+                font-size: 1.125rem;
+                font-weight: 400;
+                line-height: 1.5;
+              }
+            }
           }
         }
-        button {
-          padding: 0.5rem 1rem;
-          background-color: #e50914;
-          border: none;
-          cursor: pointer;
-          color: white;
-          font-weight: bolder;
-          font-size: 1.05rem;
-        }
-      }
-      button {
-        padding: 0.5rem 1rem;
-        background-color: #e50914;
-        border: none;
-        cursor: pointer;
-        color: white;
-        border-radius: 0.2rem;
-        font-weight: bolder;
-        font-size: 1.05rem;
       }
     }
   }
