@@ -46,38 +46,45 @@ function Signup() {
                     method="post"
                     aria-label="Sign up or restart your membership with Netflix">
                     <h3>Ready to watch? Enter your email to create or restart membership.</h3>
-                    <input
-                      autoComplete="email"
-                      minLength={'5'}
-                      maxLength={'50'}
-                      type="email"
-                      name="email"
-                      placeholder="Email address"
-                      onChange={(e) =>
-                        setFormValues({
-                          ...formValues,
-                          [e.target.name]: e.target.value,
-                        })
-                      }
-                      value={formValues.email}
-                    />
-                    {showPassword && (
+                    <div className="email-form-input">
                       <input
-                        type="password"
-                        placeholder="Password"
+                        autoComplete="email"
+                        minLength={'5'}
+                        maxLength={'50'}
+                        type="email"
+                        name="email"
+                        placeholder="Email address"
                         onChange={(e) =>
                           setFormValues({
                             ...formValues,
                             [e.target.name]: e.target.value,
                           })
                         }
-                        name="password"
-                        value={formValues.password}
+                        value={formValues.email}
                       />
-                    )}
-                    {!showPassword && (
-                      <button onClick={() => setShowPassword(true)}>Get Started</button>
-                    )}
+                      {showPassword && (
+                        <input
+                          type="password"
+                          placeholder="Password"
+                          onChange={(e) =>
+                            setFormValues({
+                              ...formValues,
+                              [e.target.name]: e.target.value,
+                            })
+                          }
+                          name="password"
+                          value={formValues.password}
+                        />
+                      )}
+                      {!showPassword && (
+                        <button
+                          className="button-started"
+                          type="submit"
+                          onClick={() => setShowPassword(true)}>
+                          Get Started
+                        </button>
+                      )}
+                    </div>
                   </form>
                 </div>
               </div>
@@ -107,6 +114,7 @@ const Container = styled.div`
       height: 100%;
       color: rgb(255, 255, 255);
       .body-content {
+        width: fit-content;
         margin: auto;
         text-align: center;
         .Sign-up {
@@ -139,6 +147,63 @@ const Container = styled.div`
                 font-size: 1.125rem;
                 font-weight: 400;
                 line-height: 1.5;
+              }
+              .email-form-input {
+                text-align: left;
+                position: relative;
+                margin: 1rem 0 0;
+                width: 100%;
+                max-width: 36.625rem;
+                display: flex;
+                align-items: center;
+                input {
+                  line-height: 1.5;
+                  font-size: 1rem;
+                  width: 65%;
+                  padding: 1.5rem 1rem 0.5rem;
+                  min-height: 16px;
+                  min-width: 16px;
+                  background: rgba(22, 22, 22, 0.7);
+                  border-color: rgba(128, 128, 128, 0.7);
+                }
+                button {
+                  appearance: none;
+                  font-style: inherit;
+                  font-variant: inherit;
+                  font-stretch: inherit;
+                  font-family: inherit;
+                  font-optical-sizing: inherit;
+                  font-kerning: inherit;
+                  font-feature-settings: inherit;
+                  font-variation-settings: inherit;
+                  margin-left: 0.5rem;
+                  text-decoration: none;
+                  -webkit-box-align: center;
+                  align-items: center;
+                  box-sizing: border-box;
+                  display: inline-flex;
+                  -webkit-box-pack: center;
+                  justify-content: center;
+                  letter-spacing: normal;
+                  line-height: 1;
+                  user-select: none;
+                  border: 0px;
+                  border-radius: 0.25rem;
+                  cursor: pointer;
+                  fill: currentcolor;
+                  position: relative;
+                  transition-duration: 250ms;
+                  transition-property: background-color, border-color;
+                  transition-timing-function: cubic-bezier(0.9, 0, 0.51, 1);
+                  vertical-align: text-top;
+                  width: auto;
+                  font-size: 1.5rem;
+                  font-weight: 500;
+                  min-height: 3.5rem;
+                  padding: 0.75rem 1.5rem;
+                  background: rgb(229, 9, 20);
+                  color: rgb(255, 255, 255);
+                }
               }
             }
           }

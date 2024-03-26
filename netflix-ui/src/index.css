@@ -55,6 +55,7 @@ body::-webkit-scrollbar {
 
 /* Responsive Login/Signup pages */
 @media screen and (min-width: 600px) {
+
   /* Login */
   .content .form-container {
     margin-bottom: 50px !important;
@@ -79,5 +80,11 @@ body::-webkit-scrollbar {
   .form-signup-body {
     content: '2';
     padding: 0 2rem;
+  }
+}
+
+@media screen and (prefer-reduced-motion) {
+  input {
+    transition: none 0s ease 0s;
   }
 }
