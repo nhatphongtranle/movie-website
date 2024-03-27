@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import BackgroundImage from '../components/BackgroundImage';
 import Header from '../components/Header';
 import { firebaseAuth } from '../utils/firebase-config';
+
 function Signup() {
   const [showPassword, setShowPassword] = useState(false);
   const [formValues, setFormValues] = useState({
@@ -12,7 +13,6 @@ function Signup() {
     password: '',
   });
   const navigate = useNavigate();
-
   const handleSignIn = async () => {
     try {
       const { email, password } = formValues;
@@ -82,6 +82,17 @@ function Signup() {
                           type="submit"
                           onClick={() => setShowPassword(true)}>
                           Get Started
+                          <div className="ChevronRight">
+                              <svg
+                                width={'24'}
+                                height={'24'}
+                                fill="none"
+                                aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 24 24">
+                                <path d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z" />
+                              </svg>
+                          </div>
                         </button>
                       )}
                     </div>
@@ -123,15 +134,8 @@ const Container = styled.div`
           padding: 0;
           z-index: 1;
           width: 100%;
-          h1 {
-            margin: 0;
-            font-size: 2rem;
-            font-weight: 700;
-          }
           p {
             margin: 1rem 0 0;
-            font-size: 1.125rem;
-            font-weight: 400;
           }
           .form-signup {
             margin: 1.5rem 0 0;
@@ -144,14 +148,11 @@ const Container = styled.div`
               content: '1';
               h3 {
                 margin: 0;
-                font-size: 1.125rem;
-                font-weight: 400;
-                line-height: 1.5;
               }
               .email-form-input {
                 text-align: left;
                 position: relative;
-                margin: 1rem 0 0;
+                margin: 1rem auto 0;
                 width: 100%;
                 max-width: 36.625rem;
                 display: flex;
@@ -180,11 +181,6 @@ const Container = styled.div`
                   text-decoration: none;
                   -webkit-box-align: center;
                   align-items: center;
-                  box-sizing: border-box;
-                  display: inline-flex;
-                  -webkit-box-pack: center;
-                  justify-content: center;
-                  letter-spacing: normal;
                   line-height: 1;
                   user-select: none;
                   border: 0px;
@@ -203,6 +199,16 @@ const Container = styled.div`
                   padding: 0.75rem 1.5rem;
                   background: rgb(229, 9, 20);
                   color: rgb(255, 255, 255);
+                }
+                .ChevronRight {
+                  display: inline-block;
+                  height: 1.5rem;
+                  svg {
+                    width: 1rem;
+                    height: inherit;
+                    margin-left: 0.5rem;
+                    margin-right: 0rem;
+                  }
                 }
               }
             }
