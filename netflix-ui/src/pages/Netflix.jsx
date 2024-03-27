@@ -1,17 +1,17 @@
-import React, { useEffect, useState } from "react";
-import styled from "styled-components";
-import Navbar from "../components/Navbar";
-import backgroundImage from "../assets/home.jpg";
-import MovieLogo from "../assets/homeTitle.webp";
+import React, { useEffect, useState } from 'react';
+import styled from 'styled-components';
+import Navbar from '../components/Navbar';
+import backgroundImage from '../assets/home.jpg';
+import MovieLogo from '../assets/homeTitle.webp';
 
-import { onAuthStateChanged } from "firebase/auth";
-import { firebaseAuth } from "../utils/firebase-config";
-import { useNavigate } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import { fetchMovies, getGenres } from "../store";
-import { FaPlay } from "react-icons/fa";
-import { AiOutlineInfoCircle } from "react-icons/ai";
-import Slider from "../components/Slider";
+import { onAuthStateChanged } from 'firebase/auth';
+import { firebaseAuth } from '../utils/firebase-config';
+import { useNavigate } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { fetchMovies, getGenres } from '../store';
+import { FaPlay } from 'react-icons/fa';
+import { AiOutlineInfoCircle } from 'react-icons/ai';
+import Slider from '../components/Slider';
 function Netflix() {
   const [isScrolled, setIsScrolled] = useState(false);
   const movies = useSelector((state) => state.netflix.movies);
@@ -27,12 +27,12 @@ function Netflix() {
 
   useEffect(() => {
     if (genresLoaded) {
-      dispatch(fetchMovies({ genres, type: "all" }));
+      dispatch(fetchMovies({ genres, type: 'all' }));
     }
   }, [genresLoaded]);
 
   onAuthStateChanged(firebaseAuth, (currentUser) => {
-    if (!currentUser) navigate("/login");
+    if (!currentUser) navigate('/login');
   });
 
   window.onscroll = () => {
@@ -44,20 +44,13 @@ function Netflix() {
     <Container>
       <Navbar isScrolled={isScrolled} />
       <div className="hero">
-        <img
-          src={backgroundImage}
-          alt="background"
-          className="background-image"
-        />
+        <img src={backgroundImage} alt="background" className="background-image" />
         <div className="container">
           <div className="logo">
             <img src={MovieLogo} alt="Movie Logo" />
           </div>
           <div className="buttons flex">
-            <button
-              onClick={() => navigate("/player")}
-              className="flex j-center a-center"
-            >
+            <button onClick={() => navigate('/player')} className="flex j-center a-center">
               <FaPlay />
               Play
             </button>
