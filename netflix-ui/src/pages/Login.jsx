@@ -1,18 +1,17 @@
-import React, { useState } from "react";
-import styled from "styled-components";
+import React, { useState } from 'react';
+import styled from 'styled-components';
 //import logo from "../assets/logo.png";
 //import background from "../assets/login.jpg";
-import { useNavigate } from "react-router-dom";
-import BackgroundImage from "../components/BackgroundImage";
-import Header from "../components/Header";
-import { onAuthStateChanged, signInWithEmailAndPassword } from "firebase/auth";
-import { firebaseAuth } from "../utils/firebase-config";
+import { useNavigate } from 'react-router-dom';
+import BackgroundImage from '../components/BackgroundImage';
+import Header from '../components/Header';
+import { onAuthStateChanged, signInWithEmailAndPassword } from 'firebase/auth';
+import { firebaseAuth } from '../utils/firebase-config';
 
 function Login(props) {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const navigate = useNavigate();
-
 
   const handleLogin = async () => {
     try {
@@ -23,7 +22,7 @@ function Login(props) {
   };
 
   onAuthStateChanged(firebaseAuth, (currentUser) => {
-    if (currentUser) navigate("/");
+    if (currentUser) navigate('/');
   });
 
   return (
@@ -34,10 +33,11 @@ function Login(props) {
         <div className="form-container flex column a-center j-center">
           <div className="form wth">
             <header className="title">
-                <h1 className="login-page-title mg-bt">Sign In</h1>
+              <h1 className="login-page-title mg-bt">Sign In</h1>
             </header>
             <form className="Signin-form" aria-label="Sign In" method="post">
-              <input className="Form-input"
+              <input
+                className="Form-input"
                 type="text"
                 placeholder="Email or phone number"
                 onChange={(e) => setEmail(e.target.value)}
@@ -53,32 +53,50 @@ function Login(props) {
             </form>
             <footer className="footer">
               <div className="remember-checkbox">
-                <input 
-                  type="checkbox" 
-                  id="Remember-me"
-                  name="Rememberme"
-                />
-                <label htmlFor="" className="Remember-me-label">Remember me</label>
+                <input type="checkbox" id="Remember-me" name="Rememberme" />
+                <label htmlFor="" className="Remember-me-label">
+                  Remember me
+                </label>
               </div>
-              <p className="Login-signup-now">New to Netflix?
-                <a className="Sign-up" target="self" onClick={() => navigate(props.login ? "/login" : "/signup")}>
-                  {props.login ? "Sign In" : "Sign up now"}
+              <p className="Login-signup-now">
+                New to Netflix?
+                <a
+                  className="Sign-up"
+                  target="self"
+                  onClick={() => navigate(props.login ? '/login' : '/signup')}>
+                  {props.login ? 'Sign In' : 'Sign up now'}
                 </a>
               </p>
               <div className="Recaptcha-terms-of-use">
                 <p>
-                  <span>
-                  This page is protected by Google reCAPTCHA to ensure you're not a bot.
+                  <span className="description">
+                    This page is protected by Google reCAPTCHA to ensure you're not a bot.
                   </span>
-                  <button className="Recaptcha-terms-of-use--link-button hidden">Learn more.</button>
+                  <button className="Recaptcha-terms-of-use--link-button hidden">
+                    Learn more.
+                  </button>
                 </p>
                 <div className="Recaptcha-terms-of-use--disclosure visible">
                   <span className="Recaptcha-disclosure-text">
                     The information collected by Google reCAPTCHA is subject to the Google
-                    <a href="https://policies.google.com/privacy" id="Recaptcha-privacy-link" target="blank"> Privacy Policy </a>
-                      and
-                    <a href="https://policies.google.com/terms" id="Recaptcha-tos-link" target="blank"> Terms of Service</a>,
-                    and is used for providing, maintaining, and improving the reCAPTCHA service and for general security purposes (it is not used for personalized advertising by Google).
+                    <a
+                      href="https://policies.google.com/privacy"
+                      id="Recaptcha-privacy-link"
+                      target="blank">
+                      {' '}
+                      Privacy Policy{' '}
+                    </a>
+                    and
+                    <a
+                      href="https://policies.google.com/terms"
+                      id="Recaptcha-tos-link"
+                      target="blank">
+                      {' '}
+                      Terms of Service
+                    </a>
+                    , and is used for providing, maintaining, and improving the reCAPTCHA service
+                    and for general security purposes (it is not used for personalized advertising
+                    by Google).
                   </span>
                 </div>
               </div>
@@ -204,7 +222,6 @@ const Container = styled.div`
             cursor: pointer;
             display: inline;
             font-family: inherit;
-            font-size: inherit;
             padding: 0;
           }
           .Recaptcha-terms-of-use--disclosure {
