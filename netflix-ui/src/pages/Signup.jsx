@@ -5,7 +5,8 @@ import styled from 'styled-components';
 import BackgroundImage from '../components/BackgroundImage';
 import Header from '../components/Header';
 import { firebaseAuth } from '../utils/firebase-config';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 function Signup() {
   const [showPassword, setShowPassword] = useState(false);
   const [formValues, setFormValues] = useState({
@@ -48,11 +49,10 @@ function Signup() {
                     <h3>Ready to watch? Enter your email to create or restart membership.</h3>
                     <div className="email-form-input">
                       <input
+                        className="email"
                         autoComplete="email"
                         minLength={'5'}
                         maxLength={'50'}
-                        type="email"
-                        name="email"
                         placeholder="Email address"
                         onChange={(e) =>
                           setFormValues({
@@ -64,6 +64,7 @@ function Signup() {
                       />
                       {showPassword && (
                         <input
+                          className="password"
                           type="password"
                           placeholder="Password"
                           onChange={(e) =>
@@ -83,15 +84,7 @@ function Signup() {
                           onClick={() => setShowPassword(true)}>
                           Get Started
                           <div className="ChevronRight">
-                              <svg
-                                width={'24'}
-                                height={'24'}
-                                fill="none"
-                                aria-hidden="true"
-                                xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 24 24">
-                                <path d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z" />
-                              </svg>
+                            <FontAwesomeIcon className="ChevronRight-icon" icon={faChevronRight} />
                           </div>
                         </button>
                       )}
@@ -101,7 +94,11 @@ function Signup() {
               </div>
             </div>
           </div>
-          {showPassword && <button onClick={handleSignIn}>Log In</button>}
+          {showPassword && (
+            <button className="Button-LogIn" onClick={handleSignIn}>
+              Log In
+            </button>
+          )}
         </div>
       </div>
     </Container>
@@ -167,6 +164,9 @@ const Container = styled.div`
                   background: rgba(22, 22, 22, 0.7);
                   border-color: rgba(128, 128, 128, 0.7);
                 }
+                .password {
+                  margin-left: 10px;
+                }
                 button {
                   appearance: none;
                   font-style: inherit;
@@ -203,11 +203,12 @@ const Container = styled.div`
                 .ChevronRight {
                   display: inline-block;
                   height: 1.5rem;
-                  svg {
+                  .ChevronRight-icon {
                     width: 1rem;
                     height: inherit;
                     margin-left: 0.5rem;
                     margin-right: 0rem;
+                    color: rgb(255, 255, 255);
                   }
                 }
               }
@@ -215,6 +216,17 @@ const Container = styled.div`
           }
         }
       }
+    }
+    .Button-LogIn {
+      margin-top: 20px;
+      padding: 0.5rem 1rem;
+      background-color: #e50914;
+      border: none;
+      cursor: pointer;
+      color: white;
+      border-radius: 0.2rem;
+      font-weight: bolder;
+      font-size: 1.05rem;
     }
   }
 `;
