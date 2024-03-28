@@ -6,7 +6,7 @@ import logo from '../assets/logo.png';
 export default function Header(props) {
   const navigate = useNavigate();
   return (
-    <StyledHeader className="flex a-center j-between">
+    <StyledHeader className="navbar flex a-center j-between">
       <div className="logo">
         <img src={logo} alt="logo" />
       </div>
@@ -17,7 +17,9 @@ export default function Header(props) {
   );
 }
 const StyledHeader = styled.header`
-  padding: 0 4rem;
+  position: relative;
+  width: inherit;
+  margin: auto;
   .logo {
     img {
       height: 5rem;
