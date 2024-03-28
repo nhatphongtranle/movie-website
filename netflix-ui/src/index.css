@@ -53,6 +53,22 @@ body::-webkit-scrollbar {
   margin-bottom: 28px !important;
 }
 
+/* Responsive header */
+
+@media (min-width: 600px) {
+  .navbar {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+@media (min-width: 960px) {
+  .navbar {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
 /* Responsive Login/Signup pages */
 @media screen and (min-width: 600px) {
 
