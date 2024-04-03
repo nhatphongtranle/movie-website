@@ -10,6 +10,7 @@ import { firebaseAuth } from '../utils/firebase-config';
 
 function Login(props) {
   const [email, setEmail] = useState('');
+  const [status, setStatus] = useState(false);
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
@@ -72,32 +73,36 @@ function Login(props) {
                   <span className="description">
                     This page is protected by Google reCAPTCHA to ensure you're not a bot.
                   </span>
-                  <button className="Recaptcha-terms-of-use--link-button hidden">
+                  <button
+                    className="Recaptcha-terms-of-use--link-button hidden"
+                    onClick={() => setStatus(!status)}>
                     Learn more.
                   </button>
                 </p>
                 <div className="Recaptcha-terms-of-use--disclosure visible">
-                  <span className="Recaptcha-disclosure-text">
-                    The information collected by Google reCAPTCHA is subject to the Google
-                    <a
-                      href="https://policies.google.com/privacy"
-                      id="Recaptcha-privacy-link"
-                      target="blank">
-                      {' '}
-                      Privacy Policy{' '}
-                    </a>
-                    and
-                    <a
-                      href="https://policies.google.com/terms"
-                      id="Recaptcha-tos-link"
-                      target="blank">
-                      {' '}
-                      Terms of Service
-                    </a>
-                    , and is used for providing, maintaining, and improving the reCAPTCHA service
-                    and for general security purposes (it is not used for personalized advertising
-                    by Google).
-                  </span>
+                  {status ? (
+                    <span className="Recaptcha-disclosure-text">
+                      The information collected by Google reCAPTCHA is subject to the Google
+                      <a
+                        href="https://policies.google.com/privacy"
+                        id="Recaptcha-privacy-link"
+                        target="blank">
+                        {' '}
+                        Privacy Policy{' '}
+                      </a>
+                      and
+                      <a
+                        href="https://policies.google.com/terms"
+                        id="Recaptcha-tos-link"
+                        target="blank">
+                        {' '}
+                        Terms of Service
+                      </a>
+                      , and is used for providing, maintaining, and improving the reCAPTCHA service
+                      and for general security purposes (it is not used for personalized advertising
+                      by Google).
+                    </span>
+                  ) : null}
                 </div>
               </div>
             </footer>
