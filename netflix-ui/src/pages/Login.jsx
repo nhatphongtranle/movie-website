@@ -7,6 +7,7 @@ import BackgroundImage from '../components/BackgroundImage';
 import Header from '../components/Header';
 import { onAuthStateChanged, signInWithEmailAndPassword } from 'firebase/auth';
 import { firebaseAuth } from '../utils/firebase-config';
+import FooterLogin from '../components/FooterLogin';
 
 function Login(props) {
   const [email, setEmail] = useState('');
@@ -108,6 +109,7 @@ function Login(props) {
             </footer>
           </div>
         </div>
+        <FooterLogin />
       </div>
     </Container>
   );
@@ -119,10 +121,9 @@ const Container = styled.div`
     position: absolute;
     top: 0;
     left: 0;
-    height: 100vh;
+    height: 150vh;
     width: 100vw;
     background-color: rgba(0, 0, 0, 0.5);
-    grid-template-rows: 15vh 85vh;
     .form-container {
       flex-grow: 1;
       margin: 0 auto;
