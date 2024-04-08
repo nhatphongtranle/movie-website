@@ -116,6 +116,7 @@ body {
 }
 
 /*-------------- RESPONSIVE FOOTERLOGIN -------------*/
+/* Min device width: 600px */
 @media screen and (min-width: 600px) {
   .Footer-login-pages {
     border-top: none;
@@ -140,6 +141,22 @@ body {
   }
 }
 
+/* Min device width: 1280px */
+@media (min-width: 1280px) {
+  .Footer-body {
+    padding-left: 3rem;
+    padding-right: 3rem;
+    margin-top: 4.5rem;
+    margin-bottom: 4.5rem;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .Footer-body {
+    max-width: (83.33333333333334% - 6rem);
+  }
+}
+
 /* Min device width: 960px */
 /* Sign Up */
 @media screen and (min-width: 960px) {
@@ -159,6 +176,8 @@ body {
     line-height: 1.5;
   }
 }
+
+/* Min device width: 1280px */
 
 @media screen and (prefer-reduced-motion) {
   input {
