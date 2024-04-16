@@ -2,7 +2,7 @@ import { createUserWithEmailAndPassword, onAuthStateChanged } from 'firebase/aut
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import BackgroundImage from '../components/BackgroundImage';
+import BackgroundImageSignup from '../components/BackgroundImageSignup';
 import Header from '../components/Header';
 import { firebaseAuth } from '../utils/firebase-config';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -29,7 +29,7 @@ function Signup() {
 
   return (
     <Container showPassword={showPassword}>
-      <BackgroundImage />
+      <BackgroundImageSignup />
       <div className="content">
         <Header login />
         <div className="body-container j-center">
@@ -49,10 +49,7 @@ function Signup() {
                     <h3>Ready to watch? Enter your email to create or restart membership.</h3>
                     <div className="email-form-input">
                       <input
-                        className="email"
-                        autoComplete="email"
-                        minLength={'5'}
-                        maxLength={'50'}
+                        type="email"
                         placeholder="Email address"
                         onChange={(e) =>
                           setFormValues({
@@ -60,11 +57,11 @@ function Signup() {
                             [e.target.name]: e.target.value,
                           })
                         }
+                        name="email"
                         value={formValues.email}
                       />
                       {showPassword && (
                         <input
-                          className="password"
                           type="password"
                           placeholder="Password"
                           onChange={(e) =>
