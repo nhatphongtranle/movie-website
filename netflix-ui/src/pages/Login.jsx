@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-//import logo from "../assets/logo.png";
-//import background from "../assets/login.jpg";
+import logo from '../assets/logo.png';
+import background from '../assets/login.jpg';
 import { useNavigate } from 'react-router-dom';
-import BackgroundImage from '../components/BackgroundImage';
+import BackgroundImageLogin from '../components/BackgroundImageLogin';
 import Header from '../components/Header';
 import { onAuthStateChanged, signInWithEmailAndPassword } from 'firebase/auth';
 import { firebaseAuth } from '../utils/firebase-config';
@@ -29,7 +29,7 @@ function Login(props) {
 
   return (
     <Container>
-      <BackgroundImage />
+      <BackgroundImageLogin />
       <div className="content">
         <Header />
         <div className="form-container flex column a-center j-center">
@@ -37,7 +37,7 @@ function Login(props) {
             <header className="title">
               <h1 className="login-page-title mg-bt">Sign In</h1>
             </header>
-            <form className="Signin-form" aria-label="Sign In" method="post">
+            <div className="Signin-form">
               <input
                 className="Form-input"
                 type="text"
@@ -52,7 +52,7 @@ function Login(props) {
                 value={password}
               />
               <button onClick={handleLogin}>Sign In</button>
-            </form>
+            </div>
             <footer className="footer">
               <div className="remember-checkbox">
                 <input type="checkbox" id="Remember-me" name="Rememberme" />
