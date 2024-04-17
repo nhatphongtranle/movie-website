@@ -97,6 +97,54 @@ function Signup() {
             </button>
           )}
         </div>
+        <section>
+          <div className="text">
+            <h1>Enjoy on your TV.</h1>
+            <p>
+              Watch on smarts TVs, PlayStation, Xbox, Chromecast, Apple TV, Blu-ray players and more
+            </p>
+            <div className="media">
+              <div>
+                <img src="" alt="" />
+                <video
+                  className="our-story-card-video"
+                  autoPlay=""
+                  playsInline=""
+                  muted=""
+                  loop=""
+                  src="https://assets.nflxext.com/ffe/siteui/acquisition/ourStory/fuji/desktop/video-tv-0819.m4v"
+                  type="video/mp4"></video>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section>
+          <div className="text">
+            <h1>Enjoy on your TV.</h1>
+            <p>
+              Watch on smarts TVs, PlayStation, Xbox, Chromecast, Apple TV, Blu-ray players and more
+            </p>
+            <div className="media"></div>
+          </div>
+        </section>
+        <section>
+          <div className="text">
+            <h1>Enjoy on your TV.</h1>
+            <p>
+              Watch on smarts TVs, PlayStation, Xbox, Chromecast, Apple TV, Blu-ray players and more
+            </p>
+            <div className="media"></div>
+          </div>
+        </section>
+        <section>
+          <div className="text">
+            <h1>Enjoy on your TV.</h1>
+            <p>
+              Watch on smarts TVs, PlayStation, Xbox, Chromecast, Apple TV, Blu-ray players and more
+            </p>
+            <div className="media"></div>
+          </div>
+        </section>
       </div>
     </Container>
   );
