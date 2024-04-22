@@ -22,6 +22,10 @@ body {
   margin: 0;
 }
 
+img {
+  max-width: 100%;
+}
+
 body {
   overflow-x: hidden;
   overflow-y: scroll;
@@ -65,15 +69,78 @@ section {
   grid-template-columns: 1fr 1fr;
   gap: 46px;
   padding: 70px 35px;
+  align-items: center;
+  border-top: 8px solid #222;
 }
 
 section div.text h1 {
   font-size: 3.125rem;
+  margin-bottom: 8px;
 }
 
 section div.text p {
   font-size: 1.625rem;
 }
+
+.media {
+  position: relative;
+}
+
+.media.play-1 img {
+  width: 400px;
+}
+
+.media.play-1 video {
+  width: 300px;
+  position: absolute;
+  top: 60px;
+  left: 50px;
+}
+
+section:nth-child(even) div.text {
+  order: 2;
+}
+
+section div.download {
+  border: 2px solid #888;
+  border-radius: 15px;
+  padding: 10px;
+  height: 95px;
+  display: grid;
+  text-align: center;
+  align-items: center;
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  width: 280px;
+  margin-left: -140px;
+  gap: 15px;
+  background-color: #000;
+  grid-template-columns: max-content 1fr max-content;
+}
+
+section div.download img.cover {
+  height: 75px;
+  width: auto;
+}
+
+.media.play-3 img {
+  width: 400px;
+  position: relative;
+  z-index: 5;
+}
+
+.media.play-3 video {
+  width: 250px;
+  position: absolute;
+  top: 36px;
+  left: 72px;
+}
+
+section.last {
+  border-bottom: 8px solid #222;
+}
+
 
 /*------------ FooterLogin ------------*/
 .Footer-login-pages {
@@ -228,7 +295,7 @@ ul>li {
   /*------- Sign up --------*/
   .body-container {
     min-height: 35rem;
-    padding: 6rem 0 6rem;
+    padding: 8rem 0 0 0;
   }
 
   .body-content {
