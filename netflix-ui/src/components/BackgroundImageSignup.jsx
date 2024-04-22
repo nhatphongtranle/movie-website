@@ -13,10 +13,10 @@ export default function BackgroundImage() {
 }
 
 const Container = styled.div`
-  height: 90vh;
+  height: 95vh;
   width: 150vw;
   img {
-    height: 90vh;
+    height: 100vh;
     width: 150vw;
   }
 `;
