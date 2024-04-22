@@ -103,46 +103,81 @@ function Signup() {
             <p>
               Watch on smarts TVs, PlayStation, Xbox, Chromecast, Apple TV, Blu-ray players and more
             </p>
-            <div className="media">
-              <div>
-                <img src="" alt="" />
-                <video
-                  className="our-story-card-video"
-                  autoPlay=""
-                  playsInline=""
-                  muted=""
-                  loop=""
-                  src="https://assets.nflxext.com/ffe/siteui/acquisition/ourStory/fuji/desktop/video-tv-0819.m4v"
-                  type="video/mp4"></video>
+          </div>
+          <div className="media play-1">
+            <div>
+              <img
+                src="https://assets.nflxext.com/ffe/siteui/acquisition/ourStory/fuji/desktop/tv.png"
+                alt=""
+              />
+              <video
+                autoPlay=""
+                playsInline=""
+                muted=""
+                loop=""
+                src="https://assets.nflxext.com/ffe/siteui/acquisition/ourStory/fuji/desktop/video-tv-0819.m4v"
+                type="video/mp4"></video>
+            </div>
+          </div>
+        </section>
+        <section>
+          <div className="text">
+            <h1>Download your shows to watch offline</h1>
+            <p>Save your favorites easily and always have something to watch</p>
+          </div>
+          <div className="media">
+            <div>
+              <img
+                src="https://assets.nflxext.com/ffe/siteui/acquisition/ourStory/fuji/desktop/mobile-0819.jpg"
+                alt=""
+              />
+              <div className="download">
+                <img
+                  className="cover"
+                  src="https://assets.nflxext.com/ffe/siteui/acquisition/ourStory/fuji/desktop/boxshot.png"
+                  alt=""
+                />
+                <span>Downloading...</span>
+                <img
+                  src="https://assets.nflxext.com/ffe/siteui/acquisition/ourStory/fuji/desktop/download-icon.gif"
+                  alt=""
+                />
               </div>
             </div>
           </div>
         </section>
         <section>
           <div className="text">
-            <h1>Enjoy on your TV.</h1>
-            <p>
-              Watch on smarts TVs, PlayStation, Xbox, Chromecast, Apple TV, Blu-ray players and more
-            </p>
-            <div className="media"></div>
+            <h1>Watch everywhere</h1>
+            <p>Stream unlimited movies and TV shows on your phone, tablet, laptop, and TV</p>
+          </div>
+          <div className="media play-3">
+            <img
+              src="https://assets.nflxext.com/ffe/siteui/acquisition/ourStory/fuji/desktop/device-pile-vn.png"
+              alt=""
+            />
+            <video
+              autoPlay=""
+              playsInline=""
+              muted=""
+              loop=""
+              src="https://assets.nflxext.com/ffe/siteui/acquisition/ourStory/fuji/desktop/video-devices-vn.m4v"
+              type="video/mp4"></video>
           </div>
         </section>
-        <section>
+        <section className="last">
           <div className="text">
-            <h1>Enjoy on your TV.</h1>
+            <h1>Create profiles for kids</h1>
             <p>
-              Watch on smarts TVs, PlayStation, Xbox, Chromecast, Apple TV, Blu-ray players and more
+              Send kids on adventures with their favorite character in a space made just for them--
+              free with your membership.
             </p>
-            <div className="media"></div>
           </div>
-        </section>
-        <section>
-          <div className="text">
-            <h1>Enjoy on your TV.</h1>
-            <p>
-              Watch on smarts TVs, PlayStation, Xbox, Chromecast, Apple TV, Blu-ray players and more
-            </p>
-            <div className="media"></div>
+          <div className="media">
+            <img
+              src="https://occ-0-395-64.1.nflxso.net/dnm/api/v6/19OhWN2dO19C9txTON9tvTFtefw/AAAABejKYujIIDQciqmGJJ8BtXkYKKTi5jiqexltvN1YmvXYIfX8B9CYwooUSIzOKneblRFthZAFsYLMgKMyNfeHwk16DmEkpIIcb6A3.png?r=f55"
+              alt=""
+            />
           </div>
         </section>
       </div>
